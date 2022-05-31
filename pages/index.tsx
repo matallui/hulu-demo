@@ -25,7 +25,7 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const genre: keyof typeof requests = context.query
-    .genre as keyof typeof requests;
+    .genre as keyof typeof requests || 'fetchTrending';
 
   const request = await fetch(
     `https://api.themoviedb.org/3${requests[genre]?.url}`
