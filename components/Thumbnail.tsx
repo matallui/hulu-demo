@@ -18,6 +18,7 @@ const Thumbnail: React.FC<Props> = forwardRef(({ result }, ref) => {
       <Image
         layout='responsive'
         src={`${BASE_URL}${result.backdrop_path || result.poster_path}`}
+        alt='movie poster'
         height={1080}
         width={1920}
       />
@@ -42,4 +43,5 @@ const Thumbnail: React.FC<Props> = forwardRef(({ result }, ref) => {
   );
 });
 
+Thumbnail.displayName = 'Thumbnail';
 export default Thumbnail;
