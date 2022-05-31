@@ -1,16 +1,20 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { ThumbUpIcon } from '@heroicons/react/outline';
 
 interface Props {
   result: any;
 }
 
-const Thumbnail: React.FC<Props> = ({ result }) => {
+const Thumbnail: React.FC<Props> = forwardRef(({ result }, ref) => {
   const BASE_URL = 'https://image.tmdb.org/t/p/original';
 
   return (
-    <div className='group cursor-pointer p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>
+    <div
+      ref={ref as any}
+      className='group cursor-pointer p-2 transition duration-200 ease-in
+      transform sm:hover:scale-105 hover:z-50 flex-1'
+    >
       <Image
         layout='responsive'
         src={`${BASE_URL}${result.backdrop_path || result.poster_path}`}
@@ -23,7 +27,10 @@ const Thumbnail: React.FC<Props> = ({ result }) => {
           className='mt-1 text-2xl text-white transition-all duration-100
           ease-in-out group-hover:font-bold'
         >
-          {result.title || result.original_title}
+          {result.title ||
+            result.original_title ||
+            result.name ||
+            result.original_name}
         </h2>
         <p className='flex items-center opacity-0 group-hover:opacity-100'>
           {result.media_type && `${result.media_type} •`}{' '}
@@ -33,6 +40,6 @@ const Thumbnail: React.FC<Props> = ({ result }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Thumbnail;

@@ -6,6 +6,7 @@ import Results from '../components/Results';
 import requests from '../utils/requests';
 
 const Home: NextPage<any> = ({ results }) => {
+  console.log(results)
   return (
     <div>
       <Head>

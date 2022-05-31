@@ -13,7 +13,7 @@ const Nav: React.FC<Props> = () => {
         className='flex px-10 sm:px-20 text-2xl whitespace-nowrap
         space-x-10 sm:space-x-20 overflow-x-scroll scrollbar-hide'
       >
-        {Object.entries(requests).map(([key, { title, url }]) => (
+        {Object.entries(requests).map(([key, { title }]) => (
           <h2
             key={key}
             onClick={() => router.push(`/?genre=${key}`)}
@@ -25,7 +25,10 @@ const Nav: React.FC<Props> = () => {
           </h2>
         ))}
       </div>
-      <div className='absolute top-0 right-0 bg-gradient-to-l from-[#06202a] h-10 w-1/12' />
+      <div
+        className='absolute top-0 right-0 bg-gradient-to-l
+        from-[#06202a] h-10 w-1/12'
+      />
     </nav>
   );
 };
